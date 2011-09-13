@@ -1,0 +1,16 @@
+
+Linux配置文件
+=================
+
+使用git管理我的linux关键配置文件,比如 $HOME/.bashrc 等
+
+规则是：
+    保持各个配置相对 / 的绝对路径，比如:
+    fstab 路径是: `pwd`/etc/fstab
+    .bashrc 路径是: `pwd`/home/kaka/.bashrc
+
+
+=================
+Kaka <win.milan@gmail.com>
+
+2011.09.13
