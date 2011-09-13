@@ -1,3 +1,4 @@
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -79,30 +80,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alh'
-alias la='ls -A'
-#alias l='ls -CF'
-alias up='uptime'
-alias update='notify sudo apt-get update'
-alias upgrade='sudo apt-get update;notify sudo apt-get upgrade'
-alias c='clear'
-alias free='free -m'
-alias tem='acpi -V'
-#alias autowallpaper='/usr/local/bin/gnome-wallpaper-slideshow'
-#alias qmake-new='/opt/qtsdk-2010.04/qt/bin/qmake'
-alias qmake-i386='/usr/local/Trolltech/QtEmbedded-4.5.0-i386/bin/qmake'
-alias qmake-arm='/usr/local/Trolltech/QtEmbedded-4.5.0-arm-webkit-4.7.0/bin/qmake'
-alias jkqtcreater='/opt/necessitas/QtCreator/bin/necessitas '
-alias qvfb='/usr/local/Trolltech/qvfb &'
-#alias qtass='/opt/qtsdk-2010.05/qt/bin/assistant &'
-alias gmbox='~/.local/bin//gmbox/gmbox.py &'
-alias hisi_android='adb connect 192.168.10.224:5555 ; adb -s 192.168.10.224:5555 shell'
-alias fixmusic='mid3iconv -e GBK *.mp3'
-#pw:674302633
-alias fuckssh='ssh -qTfnN -D 7070 -p35 lumixia@200.46.208.172'
-alias myip='curl ifconfig.me'
-#alias fuckssh='plink -ssh -pw 674302633 -C -N -P 35 -D 7070 -l lumixia 200.46.208.17'
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
@@ -117,9 +94,10 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-alias rm='rm -I'
+
 #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 PS1='`a=$?;if [ $a -ne 0 ]; then a="  "$a; echo -ne "\[\e[s\e[1A\e[$((COLUMNS-2))G\e[31m\e[1;41m${a:(-3)}\e[u\]\[\e[0m\e[7m\e[2m\]"; fi`\[\e[1;32m\]\u@\h:\[\e[0m\e[1;34m\]\w\[\e[1;34m\]\$ \[\e[0m\]'
+
 #just say i love
 function tiamoc (){
     echo "Ti amo C *_^"
@@ -139,17 +117,11 @@ mkcd(){
 #    echo -e "terminating ‘$1’ / process(es):\n$pid"
 #    kill -SIGTERM $pid
 #}
-PATH=$PATH:$HOME/.local/bin
 ### chsdir start ###
 #. $HOME/.dir_bin/chs_completion
 #PATH=$PATH:$HOME/.dir_bin/:$HOME/.bin/
 #export CHSDIR="{'n':'l'}"
 ### chsdir finish. ###
-
-##Project Dir
-#export CDPATH=.:~:/home/kaka/ProjectA
-#export CDPATH=/home/kaka/ProjectA
-#export PATH="$PATH:/sbin:/usr/local/arm/bin:/usr/local/bin:/usr/local"
 
 ##For notify##
 complete -o filenames -F _root_command notify
@@ -164,10 +136,17 @@ man()
     /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
 }
 
+# dir bookmark
+source ~/.local/bin/bashmarks.sh
+
+# define $PATH for bash ENV
+#export CDPATH=.:~:/home/kaka/ProjectA
+#export CDPATH=/home/kaka/ProjectA
+#export PATH="$PATH:/sbin:/usr/local/arm/bin:/usr/local/bin:/usr/local"
+PATH=$PATH:$HOME/.local/bin
 # export android sdk
 export PATH=$PATH:/opt/necessitas/android-sdk-linux_x86/tools
 export PATH=$PATH:/opt/necessitas/android-sdk-linux_x86/platform-tools
 NDK=/opt/necessitas/android-ndk-r6
 export PATH=$PATH:$NDK
-# dir bookmark
-source ~/.local/bin/bashmarks.sh
+
