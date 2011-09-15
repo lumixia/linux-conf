@@ -1,1 +1,16 @@
-set completion-ignore-case On
+# 自动忽略大小写
+set completion-ignore-case on
+
+# 相同名字文件会以 ... 显示
+set completion-prefix-display-length 2
+
+# 可以通过这两个快捷键选择文件
+Control-j: menu-complete
+Control-k: menu-complete-backward
+
+# 只需要按一次TAB键，就会进行自动补全
+#set show-all-if-ambiguous on
+#set show-all-if-unmodified on
+
+# 将下划线_和连接符-当作同一个字符看待
+set completion-map-case on
